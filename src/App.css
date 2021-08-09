@@ -1,14 +1,35 @@
 .App {
- display: grid;
- place-items: center;
- height: 100vh;
- background-color: #dadbd3;
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  background: rgb(131, 58, 180);
+  background: linear-gradient(
+    90deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(253, 29, 29, 1) 50%,
+    rgba(252, 176, 69, 1) 100%
+  );
 }
-.app_body{
+.app_body {
   display: flex;
-  background-color: #ededed;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(69, 203, 175, 1) 0%,
+    rgba(70, 0, 0, 1) 0%,
+    rgba(97, 9, 69, 1) 0%,
+    rgba(210, 63, 63, 1) 0%,
+    rgba(123, 18, 113, 1) 56%,
+    rgba(124, 18, 122, 1) 93%,
+    rgba(127, 19, 147, 1) 100%,
+    rgba(147, 25, 199, 1) 100%,
+    rgba(0, 212, 255, 1) 100%,
+    rgba(32, 208, 218, 1) 100%
+  );
   margin-top: -50px;
   height: 90vh;
   width: 90vw;
-  box-shadow: -1px 4px 20px -6px rgba(0,0,0,0.75);
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 15px;
 }
