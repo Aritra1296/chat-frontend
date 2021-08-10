@@ -17,8 +17,8 @@ const Chat = () => {
 
     axios.post('/messages/new', {
       message: input,
-      name: 'Aritra',
-      received: false,
+      senderId: 'RivuId',
+      receiverId: 'AritraId',
     })
     setInput('')
   }
@@ -67,7 +67,7 @@ const Chat = () => {
       </div>
       <div className='chat_body'>
         {messages.map((message) => (
-          <p className={`chat_message ${message.received && 'chat_receiver'}`}>
+          <p className={`chat_message ${message.senderId==='AritraId' && 'chat_receiver'}`}>
             <span className='chat_name'>{message.name}</span>
             {message.message}
             <span className='chat_timestamp'>
