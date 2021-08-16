@@ -23,7 +23,7 @@
 .chat_body {
   flex: 1;
   padding: 30px;
-  overflow: scroll;
+  overflow: auto;
 }
 .chat_message {
   position: relative;

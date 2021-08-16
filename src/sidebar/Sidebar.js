@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import './Sidebar.css'
 import DonutLargeIcon from '@material-ui/icons/DonutLarge'
 import ChatIcon from '@material-ui/icons/Chat'
@@ -8,8 +9,22 @@ import { Avatar, IconButton } from '@material-ui/core'
 import SidebarChat from '../sidebarChat/SidebarChat'
 import axios from '../axios'
 
-const Sidebar = () => {
+
+const Sidebar = ({ onSelect }) => {
+  const history = useHistory()
   const [users, setUsers] = useState([])
+
+  async function logOut() {
+    try {
+      await axios.get(`/users/logout`)
+      // await getLoggedIn()
+      alert('You Have Successfully Logged Off')
+      console.log('logged out')
+      history.push('/')
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   useEffect(() => {
     fetchUsers()
@@ -20,6 +35,7 @@ const Sidebar = () => {
     try {
       await axios.get(`/users/allUsers`).then((res, req) => {
         setUsers(res.data)
+        onSelect(res.data[0]._id)
       })
     } catch (error) {
       console.log(error)
@@ -38,7 +54,7 @@ const Sidebar = () => {
             <ChatIcon />
           </IconButton>
           <IconButton>
-            <ExitToAppIcon />
+            <ExitToAppIcon onClick={logOut} />
           </IconButton>
         </div>
       </div>
@@ -50,7 +66,13 @@ const Sidebar = () => {
       </div>
       <div className='sidebar_chats'>
         {users.map((user, index) => {
-          return <SidebarChat key={user.userName} user={user} />
+          return (
+            <SidebarChat
+              key={user.userName}
+              user={user}
+              onUserSelect={onSelect}
+            />
+          )
         })}
       </div>
     </div>

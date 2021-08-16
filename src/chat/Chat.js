@@ -3,29 +3,33 @@ import { AttachFile, MoreVert, SearchOutlined } from '@material-ui/icons'
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon'
 import MicIcon from '@material-ui/icons/Mic'
 import './Chat.css'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import Pusher from 'pusher-js'
 import axios from '../axios'
 import moment from 'moment'
+import AuthContext from '../auth/AuthContext'
 
-const Chat = () => {
+const Chat = ({ selecteduser }) => {
+  const { loginUserID } = useContext(AuthContext)
   const [messages, setMessages] = useState([])
   const [input, setInput] = useState('')
+
+  console.log(loginUserID)
 
   const sendMessage = (e) => {
     e.preventDefault()
 
     axios.post('/messages/new', {
       message: input,
-      senderId: 'RivuId',
-      receiverId: 'AritraId',
+      senderId: selecteduser,
+      receiverId: loginUserID,
     })
     setInput('')
   }
 
   useEffect(() => {
-    axios.get('/messages/all').then((response) => {
-      setMessages(response.data)
+    axios.get('/messages/all').then((res, req) => {
+      setMessages(res.data)
     })
   }, [])
 
@@ -43,15 +47,12 @@ const Chat = () => {
     }
   }, [messages])
 
-  console.log(messages)
-
   return (
     <div className='chat'>
       <div className='chat_header'>
-        <Avatar />
+        <Avatar src='https://www.denofgeek.com/wp-content/uploads/2021/07/henry-cavill-man-of-steel-superman-warner.jpg?resize=768%2C432' />
         <div className='chat_header_info'>
-          <h3>Room name</h3>
-          <p>Last Seen at ....</p>
+          <h3>{selecteduser}</h3>
         </div>
         <div className='chat_header_right'>
           <IconButton>
@@ -67,7 +68,11 @@ const Chat = () => {
       </div>
       <div className='chat_body'>
         {messages.map((message) => (
-          <p className={`chat_message ${message.senderId==='AritraId' && 'chat_receiver'}`}>
+          <p
+            className={`chat_message ${
+              message.senderId === 'AritraId' && 'chat_receiver'
+            }`}
+          >
             <span className='chat_name'>{message.name}</span>
             {message.message}
             <span className='chat_timestamp'>
