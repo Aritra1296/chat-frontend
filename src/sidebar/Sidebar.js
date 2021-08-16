@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import './Sidebar.css'
 import DonutLargeIcon from '@material-ui/icons/DonutLarge'
 import ChatIcon from '@material-ui/icons/Chat'
-import MoreVertIcon from '@material-ui/icons/MoreVert'
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined'
+import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import { Avatar, IconButton } from '@material-ui/core'
 import SidebarChat from '../sidebarChat/SidebarChat'
 import axios from '../axios'
@@ -38,7 +38,7 @@ const Sidebar = () => {
             <ChatIcon />
           </IconButton>
           <IconButton>
-            <MoreVertIcon />
+            <ExitToAppIcon />
           </IconButton>
         </div>
       </div>
@@ -49,11 +49,8 @@ const Sidebar = () => {
         </div>
       </div>
       <div className='sidebar_chats'>
-       
         {users.map((user, index) => {
-          return (
-          <SidebarChat key={user.userName} user={user} />
-          )
+          return <SidebarChat key={user.userName} user={user} />
         })}
       </div>
     </div>
