@@ -9,7 +9,7 @@ import axios from '../axios'
 import moment from 'moment'
 import AuthContext from '../auth/AuthContext'
 
-const Chat = ({ selecteduser }) => {
+const Chat = ({ selecteduser, selecteduserName }) => {
   const { loginUserID } = useContext(AuthContext)
   const [messages, setMessages] = useState([])
   const [input, setInput] = useState('')
@@ -52,7 +52,7 @@ const Chat = ({ selecteduser }) => {
       <div className='chat_header'>
         <Avatar src='https://www.denofgeek.com/wp-content/uploads/2021/07/henry-cavill-man-of-steel-superman-warner.jpg?resize=768%2C432' />
         <div className='chat_header_info'>
-          <h3>{selecteduser}</h3>
+          <h2>{selecteduserName}</h2>
         </div>
         <div className='chat_header_right'>
           <IconButton>
@@ -73,7 +73,6 @@ const Chat = ({ selecteduser }) => {
               message.senderId === 'AritraId' && 'chat_receiver'
             }`}
           >
-            <span className='chat_name'>{message.name}</span>
             {message.message}
             <span className='chat_timestamp'>
               {moment(message.timestamp).format('llll')}

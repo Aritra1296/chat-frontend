@@ -7,14 +7,12 @@ const SidebarChat = ({ user, onUserSelect }) => {
     <div
       className='sidebarChat'
       onClick={(e) => {
-        onUserSelect(user._id)
+        onUserSelect(user._id, user.userName)
       }}
     >
-      <Avatar />
       <div className='sidebar_chatInfo'>
         <h2>{user.userName}</h2>
-        <p>{user._id}</p>
-      </div>
+       </div>
     </div>
   )
 }

@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import './Sidebar.css'
-import DonutLargeIcon from '@material-ui/icons/DonutLarge'
-import ChatIcon from '@material-ui/icons/Chat'
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import { Avatar, IconButton } from '@material-ui/core'
 import SidebarChat from '../sidebarChat/SidebarChat'
 import axios from '../axios'
-
 
 const Sidebar = ({ onSelect }) => {
   const history = useHistory()
@@ -35,7 +32,7 @@ const Sidebar = ({ onSelect }) => {
     try {
       await axios.get(`/users/allUsers`).then((res, req) => {
         setUsers(res.data)
-        onSelect(res.data[0]._id)
+        onSelect(res.data[0]._id, res.data[0].userName)
       })
     } catch (error) {
       console.log(error)
@@ -47,12 +44,6 @@ const Sidebar = ({ onSelect }) => {
       <div className='sidebar_header'>
         <Avatar src='https://www.denofgeek.com/wp-content/uploads/2021/07/henry-cavill-man-of-steel-superman-warner.jpg?resize=768%2C432' />
         <div className='sidebar_headerRight'>
-          <IconButton>
-            <DonutLargeIcon />
-          </IconButton>
-          <IconButton>
-            <ChatIcon />
-          </IconButton>
           <IconButton>
             <ExitToAppIcon onClick={logOut} />
           </IconButton>
