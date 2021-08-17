@@ -1,12 +1,11 @@
-import React, { useState,  useContext } from 'react'
+import React, { useState, useContext ,useEffect} from 'react'
 import Chat from '../chat/Chat'
 import Sidebar from '../sidebar/Sidebar'
 import './DashBoard.css'
 import AuthContext from '../auth/AuthContext'
 
 const DashBoard = () => {
-  // const { getLoggedIn } = useContext(AuthContext)
-  
+  const {  getLoggedIn } = useContext(AuthContext)
   const [selecteduser, setSelecteduser] = useState(null)
   const [selecteduserName, setSelecteduserName] = useState(null)
   console.log(selecteduser)
@@ -15,6 +14,9 @@ const DashBoard = () => {
     setSelecteduser(userId);
     setSelecteduserName(userName);
   }
+  useEffect(() => {
+   getLoggedIn();
+  }, [])
 
   return (
     <div className='App'>

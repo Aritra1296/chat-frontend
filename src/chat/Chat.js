@@ -18,20 +18,26 @@ const Chat = ({ selecteduser, selecteduserName }) => {
 
   const sendMessage = (e) => {
     e.preventDefault()
-
     axios.post('/messages/new', {
       message: input,
-      senderId: selecteduser,
-      receiverId: loginUserID,
+      senderId: loginUserID,
+      receiverId: selecteduser,
     })
     setInput('')
   }
 
   useEffect(() => {
-    axios.get('/messages/all').then((res, req) => {
-      setMessages(res.data)
-    })
-  }, [])
+    axios
+      .get('/messages/all', {
+        params: {
+          senderId: selecteduser,
+          receiverId: loginUserID,
+        },
+      })
+      .then((res, req) => {
+        setMessages(res.data)
+      })
+  }, [loginUserID, selecteduser])
 
   useEffect(() => {
     const pusher = new Pusher('28527e97292ee45133a6', {
@@ -70,7 +76,7 @@ const Chat = ({ selecteduser, selecteduserName }) => {
         {messages.map((message) => (
           <p
             className={`chat_message ${
-              message.senderId === 'AritraId' && 'chat_receiver'
+              message.senderId === loginUserID && 'chat_receiver'
             }`}
           >
             {message.message}
