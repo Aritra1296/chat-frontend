@@ -9,6 +9,8 @@ const DashBoard = () => {
   const [selecteduser, setSelecteduser] = useState(null)
   const [selecteduserName, setSelecteduserName] = useState(null)
 
+  console.log("dummy");
+
   const changeUser = (userId,userName) => {
     setSelecteduser(userId);
     setSelecteduserName(userName);
