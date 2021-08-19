@@ -12,9 +12,7 @@ const Chat = ({ selecteduser, selecteduserName }) => {
   const [messages, setMessages] = useState([])
   const [input, setInput] = useState('')
 
-  console.log(loginUserID)
-
-  const sendMessage = (e) => {
+    const sendMessage = (e) => {
     e.preventDefault()
     axios.post('/messages/new', {
       message: input,

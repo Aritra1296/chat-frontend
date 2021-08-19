@@ -8,7 +8,6 @@ const DashBoard = () => {
   const { getLoggedIn, loginUserID } = useContext(AuthContext)
   const [selecteduser, setSelecteduser] = useState(null)
   const [selecteduserName, setSelecteduserName] = useState(null)
-  console.log(selecteduser)
 
   const changeUser = (userId,userName) => {
     setSelecteduser(userId);
