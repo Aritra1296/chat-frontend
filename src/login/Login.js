@@ -38,7 +38,7 @@ const Login = () => {
   return (
     <div className='login_App'>
       <Container className='login_app_body'>
-        <h1 className='text-center mb-5'>CHAT APP</h1>
+        <h1 className='text-center mb-5'>ChatMates</h1>
         <Card className='mb-2'>
           <Card.Body>
             <Form onSubmit={login}>

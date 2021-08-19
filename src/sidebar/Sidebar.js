@@ -51,7 +51,7 @@ const Sidebar = ({ onSelect }) => {
       <div className='sidebar_header'>
         <Avatar src='https://www.denofgeek.com/wp-content/uploads/2021/07/henry-cavill-man-of-steel-superman-warner.jpg?resize=768%2C432' />
         <div>
-          <h1>Conversations</h1>
+          <h1>ChatMates</h1>
         </div>
         <div className='sidebar_headerRight'>
           <IconButton>
