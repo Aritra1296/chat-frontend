@@ -30,7 +30,7 @@ function AuthContextProvider(props) {
         getLoggedIn,
       }}
     >
-      {loginUserID && props.children }
+      {props.children }
     </AuthContext.Provider>
   )
 }

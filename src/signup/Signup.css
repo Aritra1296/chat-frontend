@@ -1,5 +1,4 @@
-.dashboard_App {
-  display: grid;
+.signup_App {
   place-items: center;
   height: 100vh;
   background: rgb(131, 58, 180);
@@ -10,9 +9,10 @@
     rgba(252, 176, 69, 1) 100%
   );
 }
-.dashboard_app_body {
-  display: flex;
-  margin-top: -50px;
-  height: 90vh;
-  width: 90vw;
+.signup_app_body {
+  max-width: 560px !important;
+  position: absolute ;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }

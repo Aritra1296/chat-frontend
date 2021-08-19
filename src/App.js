@@ -5,8 +5,6 @@ import DashBoard from './dashBoard/DashBoard'
 import Login from './login/Login'
 import Signup from './signup/Signup'
 import { AuthContextProvider } from './auth/AuthContext'
-import axios from 'axios'
-
 
 function App() {
   return (

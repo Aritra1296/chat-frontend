@@ -1,7 +1,5 @@
 import { Avatar, Button, IconButton } from '@material-ui/core'
 import { AttachFile, MoreVert, SearchOutlined } from '@material-ui/icons'
-import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon'
-import MicIcon from '@material-ui/icons/Mic'
 import './Chat.css'
 import React, { useState, useEffect, useContext } from 'react'
 import Pusher from 'pusher-js'
@@ -88,7 +86,6 @@ const Chat = ({ selecteduser, selecteduserName }) => {
       </div>
 
       <div className='chat_footer'>
-        <InsertEmoticonIcon />
         <form>
           <input
             value={input}
@@ -100,7 +97,7 @@ const Chat = ({ selecteduser, selecteduserName }) => {
             Send a Message
           </Button>
         </form>
-        <MicIcon />
+        
       </div>
     </div>
   )

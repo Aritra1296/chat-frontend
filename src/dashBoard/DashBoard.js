@@ -5,7 +5,7 @@ import './DashBoard.css'
 import AuthContext from '../auth/AuthContext'
 
 const DashBoard = () => {
-  const {  getLoggedIn } = useContext(AuthContext)
+  const { getLoggedIn, loginUserID } = useContext(AuthContext)
   const [selecteduser, setSelecteduser] = useState(null)
   const [selecteduserName, setSelecteduserName] = useState(null)
   console.log(selecteduser)
@@ -14,13 +14,13 @@ const DashBoard = () => {
     setSelecteduser(userId);
     setSelecteduserName(userName);
   }
-  useEffect(() => {
-   getLoggedIn();
-  }, [])
+useEffect(() => {
+  getLoggedIn()
+}, [loginUserID])
 
   return (
-    <div className='App'>
-      <div className='app_body'>
+    <div className='dashboard_App'>
+      <div className='dashboard_app_body'>
         <Sidebar onSelect={changeUser} />
         <Chat selecteduser={selecteduser} selecteduserName={selecteduserName} />
       </div>
