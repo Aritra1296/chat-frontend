@@ -28,7 +28,7 @@ const Login = () => {
         .then((res, req) => {
           console.log('signed in')
           setloginUserID(res.data._id)
-          history.push(`/dashBoard`)
+          history.push(`/chatMates`)
         })
     } catch (error) {
       console.log(error)

@@ -14,7 +14,7 @@ function App() {
           <Switch>
             <Route exact path='/' component={Login}></Route>
             <Route path='/signUp' component={Signup}></Route>
-            <Route path='/dashBoard' component={DashBoard}></Route>
+            <Route path='/chatMates' component={DashBoard}></Route>
           </Switch>
         </Router>
       </AuthContextProvider>
