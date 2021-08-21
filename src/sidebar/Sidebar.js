@@ -12,6 +12,21 @@ const Sidebar = ({ onSelect }) => {
   const { loginUserID } = useContext(AuthContext)
   const history = useHistory()
   const [users, setUsers] = useState([])
+  const [filteredUsers, setFilteredUsers] = useState([])
+  
+
+  const SearchUser = (e) => {
+    const search = e.target.value;
+    if (search) {
+      setFilteredUsers(users.filter((user) => {
+        if (user.userName.toLowerCase().includes(search.toLowerCase())) {
+          return user
+        }
+      })
+      )}else{
+        setFilteredUsers(users)
+      }
+  }
 
   async function logOut() {
     try {
@@ -39,6 +54,7 @@ const Sidebar = ({ onSelect }) => {
         })
         .then((res, req) => {
           setUsers(Array.isArray(res.data) ? res.data : [])
+          setFilteredUsers(Array.isArray(res.data) ? res.data : [])
           onSelect(res.data[0]._id, res.data[0].userName)
         })
     } catch (error) {
@@ -62,11 +78,15 @@ const Sidebar = ({ onSelect }) => {
       <div className='sidebar_search'>
         <div className='sidebar_searchContainer'>
           <SearchOutlinedIcon />
-          <input type='text' placeholder='Search or start new chat' />
+          <input
+            type='text'
+            placeholder='Search or start new chat'
+            onChange={SearchUser}
+          />
         </div>
       </div>
       <div className='sidebar_chats'>
-        {users.map((user, index) => {
+        {filteredUsers.map((user, index) => {
           return (
             <SidebarChat
               key={user.userName}
