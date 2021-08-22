@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import axios from '../axios'
+import { useHistory } from 'react-router-dom'
 import './Signup.css'
 import { Card, Button, Form, Container } from 'react-bootstrap'
 
 const Signup = () => {
+  const history = useHistory()
   const [userDetails, setuserDetails] = useState({
     userName: '',
     email: '',
@@ -28,7 +30,8 @@ const Signup = () => {
         console.log(error)
       })
     setuserDetails({ userName: '', email: '', password: '' })
-    alert('New User accorunt created')
+    alert('New User account created')
+    history.push(`/`)
   }
 
   return (
@@ -61,7 +64,7 @@ const Signup = () => {
               <Form.Group className='mb-3' controlId='formBasicPassword'>
                 <Form.Label className='fw-bold'>Password</Form.Label>
                 <Form.Control
-                  type='onChange={handleInput}'
+                  type='password'
                   placeholder='Enter password'
                   onChange={handleInput}
                   name='password'
